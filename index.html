@@ -775,11 +775,7 @@
 
             <div class="contact-card">
               <h4>Request Information</h4>
-              <form id="contact-form" class="form-grid" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="contact" />
-                <p class="hidden-field">
-                  <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-                </p>
+              <form id="contact-form" class="form-grid">
                 <div class="field">
                   <label for="fullName">Full Name</label>
                   <input id="fullName" name="fullName" placeholder="Enter your name" autocomplete="name" required />
@@ -863,14 +859,6 @@
       const submitButton = document.getElementById("submit-button");
       const statusMessage = document.getElementById("status-message");
 
-      function encodeForm(data) {
-        return Object.keys(data)
-          .map(function (key) {
-            return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-          })
-          .join("&");
-      }
-
       form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -881,27 +869,36 @@
 
         const formData = new FormData(form);
         const payload = {
-          "form-name": "contact",
-          "bot-field": formData.get("bot-field") || "",
-          fullName: formData.get("fullName") || "",
+          name: formData.get("fullName") || "",
           email: formData.get("email") || "",
-          businessName: formData.get("businessName") || "",
-          serviceType: formData.get("serviceType") || "",
-          phone: formData.get("phone") || "",
-          message: formData.get("message") || "",
+          _subject: `Vending Inquiry - ${formData.get("businessName") || formData.get("fullName") || "H&H Boyd Vending"}`,
+          message: [
+            `Business or Property Name: ${formData.get("businessName") || ""}`,
+            `Service Type: ${formData.get("serviceType") || ""}`,
+            `Phone Number: ${formData.get("phone") || ""}`,
+            "",
+            "Message:",
+            formData.get("message") || "",
+          ].join("
+"),
+          _template: "table",
+          _captcha: "false",
         };
 
         try {
-          const response = await fetch("/", {
+          const response = await fetch("https://formsubmit.co/ajax/hhboydvending@gmail.com", {
             method: "POST",
             headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
+              "Content-Type": "application/json",
+              Accept: "application/json"
             },
-            body: encodeForm(payload),
+            body: JSON.stringify(payload)
           });
 
-          if (!response.ok) {
-            throw new Error("Unable to send your message right now.");
+          const result = await response.json();
+
+          if (!response.ok || result.success === "false") {
+            throw new Error(result.message || "Unable to send your message right now.");
           }
 
           statusMessage.className = "status-message success";
@@ -918,4 +915,5 @@
     </script>
   </body>
 </html>
+
 
