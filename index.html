@@ -6,60 +6,49 @@
     <title>H&amp;H BOYD VENDING</title>
     <meta
       name="description"
-      content="H&amp;H Boyd Vending provides professional snack, beverage, and combo vending machine service in Philadelphia and surrounding areas."
+      content="H&amp;H Boyd Vending provides premium snack, beverage, and combo vending machine service in Philadelphia and surrounding areas."
     />
     <style>
       :root {
         --red: #d62828;
         --red-dark: #b91c1c;
         --yellow: #f4b400;
-        --yellow-soft: #fff6d6;
+        --yellow-soft: #fff7d8;
+        --gold: #f6c453;
         --text: #1f2937;
         --muted: #6b7280;
-        --border: #f3d3d3;
+        --border: #f1d7d7;
         --white: #ffffff;
-        --shadow: 0 18px 38px rgba(0, 0, 0, 0.08);
+        --dark: #12161f;
+        --dark-soft: #1c2331;
+        --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+        --shadow-strong: 0 28px 70px rgba(15, 23, 42, 0.16);
         --radius: 24px;
-        --section-space: 84px;
+        --section-space: 88px;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
         color: var(--text);
-        background: linear-gradient(to bottom, #fff9e8, #ffffff 40%, #fff5f5 100%);
+        background:
+          radial-gradient(circle at top, #fff6dc 0%, #ffffff 32%),
+          linear-gradient(to bottom, #fffaf0 0%, #ffffff 42%, #fff6f6 100%);
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      img {
-        display: block;
-        width: 100%;
-      }
-
-      .container {
-        width: min(1120px, 92%);
-        margin: 0 auto;
-      }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; width: 100%; }
+      .container { width: min(1180px, 92%); margin: 0 auto; }
 
       .header {
         position: sticky;
         top: 0;
-        z-index: 30;
-        background: rgba(255, 255, 255, 0.96);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border);
+        z-index: 60;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(241, 215, 215, 0.8);
       }
 
       .nav {
@@ -67,7 +56,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 24px;
-        padding: 18px 0;
+        padding: 16px 0;
       }
 
       .logo {
@@ -77,29 +66,30 @@
       }
 
       .logo-mark {
-        width: 54px;
-        height: 54px;
+        width: 56px;
+        height: 56px;
         border-radius: 18px;
         display: grid;
         place-items: center;
         font-weight: 900;
         color: white;
-        background: linear-gradient(135deg, var(--red), var(--yellow));
-        box-shadow: var(--shadow);
+        background: linear-gradient(135deg, var(--red), var(--gold));
+        box-shadow: 0 14px 26px rgba(214, 40, 40, 0.22);
       }
 
       .logo h1 {
         margin: 0;
-        font-size: 1.35rem;
+        font-size: 1.3rem;
         font-weight: 900;
         color: var(--red-dark);
         line-height: 1;
+        letter-spacing: -0.4px;
       }
 
       .logo p {
         margin: 5px 0 0;
         color: #9a6b00;
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         font-weight: 800;
         letter-spacing: 2px;
         text-transform: uppercase;
@@ -107,68 +97,89 @@
 
       .menu {
         display: flex;
-        gap: 22px;
+        gap: 24px;
         align-items: center;
       }
 
       .menu a {
         font-weight: 700;
-        color: #374151;
+        color: #334155;
+        position: relative;
       }
 
-      .menu a:hover {
-        color: var(--red);
+      .menu a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--red), var(--gold));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+
+      .menu a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .mini-call {
+        padding: 12px 16px;
+        border-radius: 999px;
+        border: 1px solid #f2d4d4;
+        background: #ffffff;
+        font-weight: 800;
+        color: #374151;
       }
 
       .btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 14px 22px;
-        border-radius: 16px;
+        padding: 15px 24px;
+        border-radius: 18px;
         font-weight: 800;
-        transition: 0.2s ease;
+        transition: 0.25s ease;
         border: none;
         cursor: pointer;
         font: inherit;
       }
 
-      .btn:hover {
-        transform: translateY(-1px);
-      }
+      .btn:hover { transform: translateY(-2px); }
 
       .btn-primary {
         color: white;
         background: linear-gradient(135deg, var(--red), #ef4444);
-        box-shadow: 0 12px 24px rgba(214, 40, 40, 0.2);
+        box-shadow: 0 16px 30px rgba(214, 40, 40, 0.22);
       }
 
       .btn-secondary {
-        border: 2px solid #f6c744;
-        background: white;
+        border: 2px solid #f6cf67;
+        background: #fffef8;
         color: var(--text);
       }
 
-      section {
-        padding: var(--section-space) 0;
-      }
-
-      .hero {
-        padding-top: 44px;
-      }
+      section { padding: var(--section-space) 0; }
 
       .slideshow-wrap {
-        padding: 28px 0 10px;
+        padding: 28px 0 18px;
       }
 
       .slideshow {
         position: relative;
         overflow: hidden;
-        border-radius: 28px;
+        border-radius: 34px;
         border: 1px solid var(--border);
-        box-shadow: var(--shadow);
+        box-shadow: var(--shadow-strong);
         background: #fff2f2;
-        min-height: 420px;
+        min-height: 530px;
       }
 
       .slide {
@@ -178,40 +189,40 @@
         transition: opacity 0.8s ease;
       }
 
-      .slide.active {
-        opacity: 1;
-      }
+      .slide.active { opacity: 1; }
 
       .slide img {
         width: 100%;
         height: 100%;
-        min-height: 420px;
+        min-height: 530px;
         object-fit: cover;
       }
 
       .slide-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(90deg, rgba(31, 41, 55, 0.68), rgba(31, 41, 55, 0.18));
+        background:
+          linear-gradient(90deg, rgba(17, 24, 39, 0.75), rgba(17, 24, 39, 0.24)),
+          linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22));
       }
 
       .slide-content {
         position: absolute;
-        left: 40px;
-        bottom: 34px;
+        left: 48px;
+        bottom: 44px;
         z-index: 2;
-        max-width: 520px;
+        max-width: 620px;
         color: white;
       }
 
       .slide-content span {
         display: inline-block;
-        margin-bottom: 12px;
-        padding: 8px 14px;
+        margin-bottom: 16px;
+        padding: 9px 15px;
         border-radius: 999px;
-        background: rgba(244, 180, 0, 0.88);
+        background: rgba(246, 196, 83, 0.95);
         color: #3b2a00;
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         font-weight: 900;
         letter-spacing: 1.5px;
         text-transform: uppercase;
@@ -219,95 +230,163 @@
 
       .slide-content h2 {
         margin: 0;
-        font-size: clamp(2rem, 4vw, 3.2rem);
-        line-height: 1.02;
+        font-size: clamp(2.2rem, 4.4vw, 4rem);
+        line-height: 0.98;
+        letter-spacing: -1.6px;
       }
 
       .slide-content p {
-        margin: 14px 0 0;
-        font-size: 1rem;
-        line-height: 1.7;
-        color: rgba(255, 255, 255, 0.92);
+        margin: 16px 0 0;
+        font-size: 1.03rem;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.92);
+        max-width: 560px;
       }
 
       .slide-dots {
         position: absolute;
-        right: 24px;
-        bottom: 24px;
+        right: 26px;
+        bottom: 26px;
         z-index: 3;
         display: flex;
-        gap: 8px;
+        gap: 9px;
       }
 
       .slide-dot {
-        width: 11px;
-        height: 11px;
+        width: 12px;
+        height: 12px;
         border-radius: 999px;
         border: none;
-        background: rgba(255, 255, 255, 0.45);
+        background: rgba(255,255,255,0.42);
         cursor: pointer;
       }
 
       .slide-dot.active {
-        background: white;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(255,255,255,0.18);
+      }
+
+      .slide-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 4;
+        width: 52px;
+        height: 52px;
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.12);
+        color: #fff;
+        font-size: 1.5rem;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        transition: 0.25s ease;
+      }
+
+      .slide-arrow:hover {
+        background: rgba(255,255,255,0.22);
+        transform: translateY(-50%) scale(1.04);
+      }
+
+      .slide-arrow.prev { left: 22px; }
+      .slide-arrow.next { right: 22px; }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+        will-change: opacity, transform;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .hero {
+        padding-top: 24px;
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 36px;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 34px;
         align-items: center;
       }
 
       .eyebrow {
         display: inline-block;
-        padding: 8px 16px;
+        padding: 9px 16px;
         border-radius: 999px;
         background: var(--yellow-soft);
-        border: 1px solid #f3d36a;
+        border: 1px solid #f4db85;
         color: #8a5a00;
-        font-size: 0.88rem;
+        font-size: 0.84rem;
         font-weight: 800;
       }
 
       .hero h2 {
         margin: 18px 0 0;
-        font-size: clamp(2.6rem, 5vw, 4.3rem);
-        line-height: 0.98;
-        letter-spacing: -1.4px;
+        font-size: clamp(2.7rem, 5vw, 4.6rem);
+        line-height: 0.97;
+        letter-spacing: -1.7px;
       }
 
       .hero p {
         margin: 18px 0 0;
         color: var(--muted);
-        line-height: 1.8;
+        line-height: 1.9;
         font-size: 1.05rem;
-        max-width: 620px;
+        max-width: 650px;
       }
 
       .hero-actions {
         display: flex;
         gap: 14px;
         flex-wrap: wrap;
-        margin-top: 28px;
+        margin-top: 30px;
+      }
+
+      .trust-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .trust-pill {
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: #ffffff;
+        border: 1px solid #f1dddd;
+        box-shadow: var(--shadow);
+        font-weight: 800;
+        color: #374151;
+        text-align: center;
       }
 
       .hero-panel,
       .section-panel,
       .service-card,
-      .contact-card {
+      .contact-card,
+      .process-card,
+      .trust-card {
         background: var(--white);
         border: 1px solid var(--border);
-        border-radius: var(--radius);
+        border-radius: 26px;
         box-shadow: var(--shadow);
       }
 
       .hero-panel {
-        padding: 28px;
+        padding: 30px;
+        background: linear-gradient(180deg, #ffffff 0%, #fffaf3 100%);
       }
 
       .hero-panel h3 {
-        margin: 0 0 20px;
+        margin: 0 0 22px;
         font-size: 1.35rem;
       }
 
@@ -317,15 +396,15 @@
       }
 
       .hero-item {
-        padding: 14px 16px;
-        border-radius: 16px;
+        padding: 16px 18px;
+        border-radius: 18px;
         background: linear-gradient(135deg, #fff9e6, #ffffff);
-        border: 1px solid #f5df97;
+        border: 1px solid #f4df9c;
         font-weight: 700;
       }
 
       .section-head {
-        margin-bottom: 28px;
+        margin-bottom: 32px;
         text-align: center;
       }
 
@@ -333,19 +412,20 @@
         color: var(--red);
         text-transform: uppercase;
         letter-spacing: 3px;
-        font-size: 0.84rem;
+        font-size: 0.82rem;
         font-weight: 900;
       }
 
       .section-head h3 {
         margin: 10px 0 0;
-        font-size: clamp(2rem, 4vw, 3rem);
+        font-size: clamp(2.1rem, 4vw, 3.2rem);
+        letter-spacing: -1px;
       }
 
       .section-head p {
         color: var(--muted);
-        line-height: 1.8;
-        max-width: 700px;
+        line-height: 1.9;
+        max-width: 760px;
         margin: 14px auto 0;
       }
 
@@ -356,18 +436,18 @@
       }
 
       .section-panel {
-        padding: 28px;
+        padding: 30px;
       }
 
       .section-panel h4 {
         margin: 0 0 14px;
-        font-size: 1.3rem;
+        font-size: 1.28rem;
       }
 
       .section-panel p {
         margin: 0;
         color: var(--muted);
-        line-height: 1.8;
+        line-height: 1.85;
       }
 
       .industry-grid {
@@ -378,7 +458,7 @@
       }
 
       .industry-pill {
-        padding: 14px;
+        padding: 15px;
         border-radius: 16px;
         background: #fff7ed;
         border: 1px solid #fed7aa;
@@ -389,11 +469,79 @@
       .services-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
+        gap: 22px;
+        align-items: stretch;
       }
 
       .service-card {
-        padding: 24px;
+        position: relative;
+        padding: 18px;
+        background: linear-gradient(180deg, #ffffff 0%, #fffaf2 100%);
+        border: 1px solid #f3d7d7;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+        transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 6px;
+        background: linear-gradient(90deg, var(--red), var(--gold));
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 28px 55px rgba(0, 0, 0, 0.12);
+      }
+
+      .service-card.featured {
+        transform: translateY(-6px);
+        box-shadow: 0 30px 60px rgba(214, 40, 40, 0.12);
+      }
+
+      .service-card.featured:hover {
+        transform: translateY(-12px);
+      }
+
+      .service-badge {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: #fff3cf;
+        color: #8a5a00;
+        border: 1px solid #f4d780;
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+      }
+
+      .service-image-wrap {
+        background: radial-gradient(circle at top, #ffffff 0%, #f8fafc 60%, #f5f5f5 100%);
+        border: 1px solid #f1d8d8;
+        border-radius: 20px;
+        padding: 16px;
+        margin-bottom: 18px;
+        min-height: 230px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .service-image {
+        width: 100%;
+        max-height: 190px;
+        object-fit: contain;
+        filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.12));
+        transition: transform 0.28s ease;
+      }
+
+      .service-card:hover .service-image {
+        transform: scale(1.04);
       }
 
       .service-bar {
@@ -412,23 +560,115 @@
       .service-card p {
         margin: 12px 0 0;
         color: var(--muted);
-        line-height: 1.75;
+        line-height: 1.8;
         font-size: 0.97rem;
+      }
+
+      .service-note {
+        margin-top: 14px;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--red-dark);
+      }
+
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .trust-card {
+        padding: 24px;
+        background: linear-gradient(180deg, #ffffff 0%, #fffaf3 100%);
+      }
+
+      .trust-number {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--red-dark);
+        margin-bottom: 10px;
+      }
+
+      .trust-card h4 {
+        margin: 0 0 10px;
+        font-size: 1.1rem;
+      }
+
+      .trust-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .process-card {
+        padding: 28px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(180deg, #ffffff 0%, #fffaf2 100%);
+      }
+
+      .process-step {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--red), var(--gold));
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin-bottom: 18px;
+        box-shadow: 0 14px 26px rgba(214, 40, 40, 0.2);
+      }
+
+      .process-card h4 {
+        margin: 0 0 10px;
+        font-size: 1.18rem;
+      }
+
+      .process-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
       }
 
       .contact-layout {
         display: grid;
-        grid-template-columns: 0.9fr 1.1fr;
+        grid-template-columns: 0.92fr 1.08fr;
         gap: 22px;
       }
 
       .contact-card {
-        padding: 28px;
+        padding: 30px;
+      }
+
+      .contact-dark {
+        color: #fff;
+        background: linear-gradient(135deg, #171c27, #252d3d);
+        border-color: rgba(255,255,255,0.08);
+        box-shadow: var(--shadow-strong);
+      }
+
+      .contact-dark h4,
+      .contact-dark .info-item strong {
+        color: #fff;
+      }
+
+      .contact-dark .info-item {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.92);
       }
 
       .contact-card h4 {
         margin: 0;
-        font-size: 1.3rem;
+        font-size: 1.35rem;
       }
 
       .info-list {
@@ -438,7 +678,7 @@
       }
 
       .info-item {
-        padding: 15px 16px;
+        padding: 16px 16px;
         border-radius: 16px;
         background: #fff9e6;
         border: 1px solid #f5df97;
@@ -460,9 +700,7 @@
         margin-top: 18px;
       }
 
-      .full {
-        grid-column: 1 / -1;
-      }
+      .full { grid-column: 1 / -1; }
 
       .field label {
         display: block;
@@ -494,39 +732,74 @@
         margin-top: 16px;
         color: var(--muted);
         font-size: 0.95rem;
-        line-height: 1.7;
+        line-height: 1.8;
       }
 
       .footer {
-        padding: 30px 0 44px;
-        text-align: center;
-        color: var(--muted);
-        border-top: 1px solid var(--border);
-        margin-top: 12px;
+        background: #101520;
+        color: rgba(255,255,255,0.86);
+        padding: 54px 0 30px;
+        margin-top: 20px;
       }
 
-      @media (max-width: 1024px) {
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr 0.85fr 1fr;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .footer-brand h4,
+      .footer-col h5 {
+        margin: 0 0 14px;
+        color: #fff;
+      }
+
+      .footer-brand p,
+      .footer-col p,
+      .footer-col a {
+        color: rgba(255,255,255,0.72);
+        line-height: 1.8;
+        display: block;
+        margin: 0 0 8px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 20px;
+        color: rgba(255,255,255,0.62);
+        text-align: center;
+      }
+
+      @media (max-width: 1100px) {
         .hero-grid,
         .about-grid,
         .contact-layout,
-        .services-grid {
+        .services-grid,
+        .trust-grid,
+        .process-grid,
+        .footer-grid {
           grid-template-columns: 1fr 1fr;
+        }
+
+        .trust-row {
+          grid-template-columns: 1fr;
         }
       }
 
       @media (max-width: 860px) {
         .slideshow {
-          min-height: 300px;
+          min-height: 330px;
         }
 
         .slide img {
-          min-height: 300px;
+          min-height: 330px;
         }
 
         .slide-content {
-          left: 22px;
-          right: 22px;
-          bottom: 22px;
+          left: 24px;
+          right: 24px;
+          bottom: 24px;
         }
 
         .slide-dots {
@@ -534,7 +807,17 @@
           bottom: 16px;
         }
 
-        .menu {
+        .slide-arrow {
+          width: 42px;
+          height: 42px;
+          font-size: 1.2rem;
+        }
+
+        .slide-arrow.prev { left: 12px; }
+        .slide-arrow.next { right: 12px; }
+
+        .menu,
+        .mini-call {
           display: none;
         }
 
@@ -542,8 +825,11 @@
         .about-grid,
         .contact-layout,
         .services-grid,
+        .trust-grid,
+        .process-grid,
         .industry-grid,
-        .form-grid {
+        .form-grid,
+        .footer-grid {
           grid-template-columns: 1fr;
         }
 
@@ -551,8 +837,13 @@
           flex-wrap: wrap;
         }
 
-        .hero {
-          padding-top: 56px;
+        section {
+          padding: 72px 0;
+        }
+
+        .hero h2,
+        .slide-content h2 {
+          letter-spacing: -1px;
         }
       }
     </style>
@@ -571,67 +862,73 @@
         <nav class="menu" aria-label="Primary">
           <a href="#about">About</a>
           <a href="#services">Services</a>
+          <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </nav>
 
-        <a class="btn btn-primary" href="#contact">Get Started</a>
+        <div class="header-actions">
+          <a class="mini-call" href="tel:+12672420272">(267) 242-0272</a>
+          <a class="btn btn-primary" href="#contact">Request a Quote</a>
+        </div>
       </div>
     </header>
 
     <main>
-      <section class="slideshow-wrap">
+      <section class="slideshow-wrap fade-up">
         <div class="container">
           <div class="slideshow" id="vending-slideshow">
             <div class="slide active">
-              <img src="./vending%20machine%20photo.jfif" alt="Customer using a vending machine with snacks inside" />
+              <img src="vending machine photo.jfif" alt="Customer using a vending machine with snacks inside" />
               <div class="slide-overlay"></div>
               <div class="slide-content">
-                <span>H&amp;H Boyd Vending</span>
-                <h2>Modern vending solutions for busy spaces.</h2>
-                <p>Professional snack, drink, and combo vending setups designed for convenience and reliability.</p>
+                <span>Philadelphia Area Vending</span>
+                <h2>Premium vending service for properties that want convenience done right.</h2>
+                <p>Snack, beverage, and combo vending programs that look polished, stay stocked, and serve your location professionally.</p>
               </div>
             </div>
 
             <div class="slide">
-              <img src="./vending%20machine%20photo%202.jfif" alt="People using a vending machine in a shopping area" />
+              <img src="vending machine photo 2.jfif" alt="People using a vending machine in a shopping area" />
               <div class="slide-overlay"></div>
               <div class="slide-content">
-                <span>Convenient Access</span>
-                <h2>Vending machines people actually want to use.</h2>
-                <p>Clean, attractive machines that make grabbing snacks and drinks quick and easy.</p>
+                <span>High-Traffic Ready</span>
+                <h2>Clean, modern machines built for busy spaces.</h2>
+                <p>We help offices, schools, apartments, and commercial properties keep convenient snack and drink access available every day.</p>
               </div>
             </div>
 
             <div class="slide">
-              <img src="./vending%20machine%20photo%203.jfif" alt="Outdoor vending machine location with customers" />
+              <img src="vending machine photo 3.jfif" alt="Outdoor vending machine location with customers" />
               <div class="slide-overlay"></div>
               <div class="slide-content">
                 <span>Flexible Placement</span>
-                <h2>Great for offices, apartments, schools, and more.</h2>
-                <p>We help match the right machine setup to your location, traffic, and customer needs.</p>
+                <h2>Indoor and outdoor vending programs tailored to your needs.</h2>
+                <p>From setup to service, H&amp;H Boyd Vending makes it easy to add dependable vending where your customers and staff need it most.</p>
               </div>
             </div>
 
             <div class="slide">
-              <img src="./vending%20machine%20photo%204.jfif" alt="Close-up of a vending machine keypad and payment area" />
+              <img src="vending machine photo 4.jfif" alt="Close-up of a vending machine keypad and payment area" />
               <div class="slide-overlay"></div>
               <div class="slide-content">
-                <span>Easy To Use</span>
-                <h2>Simple, reliable service from setup to support.</h2>
-                <p>From installation to maintenance, H&amp;H Boyd Vending keeps your machines running smoothly.</p>
+                <span>Fast Payments</span>
+                <h2>Simple, smooth customer access at every machine.</h2>
+                <p>Modern vending convenience helps every stop feel quick, easy, and reliable for the people at your property.</p>
               </div>
             </div>
 
             <div class="slide">
-              <img src="./vending%20machine%20photo%205.jfif" alt="Woman paying at a vending machine with a mobile phone" />
+              <img src="vending machine photo 5.jfif" alt="Woman paying at a vending machine with a mobile phone" />
               <div class="slide-overlay"></div>
               <div class="slide-content">
-                <span>Smart Convenience</span>
-                <h2>Stocked, managed, and ready for your property.</h2>
-                <p>We provide dependable vending service with product options tailored to your location.</p>
+                <span>Professional Support</span>
+                <h2>Service that keeps your vending program working hard.</h2>
+                <p>Installation, restocking, and maintenance handled with consistency, professionalism, and care.</p>
               </div>
             </div>
 
+            <button class="slide-arrow prev" type="button" aria-label="Previous slide">&#8249;</button>
+            <button class="slide-arrow next" type="button" aria-label="Next slide">&#8250;</button>
             <div class="slide-dots" aria-label="Slideshow navigation">
               <button class="slide-dot active" type="button" aria-label="Show slide 1"></button>
               <button class="slide-dot" type="button" aria-label="Show slide 2"></button>
@@ -643,42 +940,49 @@
         </div>
       </section>
 
-      <section class="hero">
+      <section class="hero fade-up">
         <div class="container hero-grid">
           <div>
             <span class="eyebrow">Professional • Stocked • Fully Managed</span>
-            <h2>Vending service that looks polished and works hard.</h2>
+            <h2>Vending service that looks elevated and works hard for your property.</h2>
             <p>
-              H&amp;H BOYD VENDING provides snack, beverage, and combo machine service for offices,
-              schools, gyms, apartment communities, and commercial properties across Philadelphia
-              and surrounding areas.
+              H&amp;H Boyd Vending provides snack, beverage, and combo machine service for offices,
+              schools, gyms, apartment communities, warehouses, and commercial spaces across
+              Philadelphia and surrounding areas.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Request Service</a>
-              <a class="btn btn-secondary" href="#services">View Options</a>
+              <a class="btn btn-primary" href="#contact">Get Started</a>
+              <a class="btn btn-secondary" href="#services">Explore Services</a>
+            </div>
+
+            <div class="trust-row">
+              <div class="trust-pill">Free Installation</div>
+              <div class="trust-pill">Routine Restocking</div>
+              <div class="trust-pill">Philadelphia Area Service</div>
             </div>
           </div>
 
           <div class="hero-panel">
             <h3>What You Can Expect</h3>
             <div class="hero-list">
-              <div class="hero-item">Free installation and setup</div>
-              <div class="hero-item">Routine restocking and maintenance</div>
-              <div class="hero-item">Customized products for your location</div>
-              <div class="hero-item">Fast, professional customer support</div>
+              <div class="hero-item">Clean machine presentation that looks professional on-site</div>
+              <div class="hero-item">Customized product selection based on your traffic and location</div>
+              <div class="hero-item">Fast support, restocking, and dependable maintenance</div>
+              <div class="hero-item">Flexible snack, drink, combo, and custom vending programs</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="about">
+      <section id="about" class="fade-up">
         <div class="container">
           <div class="section-head">
             <div class="mini">About</div>
-            <h3>Simple, professional vending for busy locations</h3>
+            <h3>Simple, polished vending for busy locations</h3>
             <p>
-              H&amp;H Boyd Vending focuses on dependable service, clean presentation, and vending programs
-              tailored to the people at your property.
+              H&amp;H Boyd Vending focuses on dependable service, professional presentation, and
+              vending programs tailored to the people at your property. We make vending feel easy,
+              organized, and ready for daily use.
             </p>
           </div>
 
@@ -686,8 +990,8 @@
             <div class="section-panel">
               <h4>Why H&amp;H Boyd Vending</h4>
               <p>
-                We handle setup, restocking, and maintenance so vending stays easy. Our goal is to keep your
-                machine full, working, and looking professional.
+                We handle setup, restocking, and maintenance so your vending service stays simple.
+                Our goal is to keep each machine full, clean, working, and aligned with your location’s needs.
               </p>
             </div>
 
@@ -706,52 +1010,141 @@
         </div>
       </section>
 
-      <section id="services">
+      <section id="services" class="fade-up">
         <div class="container">
           <div class="section-head">
             <div class="mini">Services</div>
             <h3>The right machine setup for your space</h3>
             <p>
-              Choose from snack, beverage, combo, and custom vending programs designed around your traffic,
-              layout, and customer needs.
+              Choose from snack, beverage, combo, and custom vending programs designed around your
+              traffic, layout, and customer needs.
             </p>
           </div>
 
           <div class="services-grid">
             <div class="service-card">
+              <div class="service-badge">Best Seller</div>
+              <div class="service-image-wrap">
+                <img class="service-image" src="snack machine.jfif" alt="Snack vending machine" />
+              </div>
               <div class="service-bar"></div>
               <h4>Snack Machines</h4>
               <p>Stocked with popular favorites and better-for-you options for high-traffic locations.</p>
+              <div class="service-note">Great for break rooms, schools, and waiting areas</div>
             </div>
+
             <div class="service-card">
+              <div class="service-badge">Cold Drinks</div>
+              <div class="service-image-wrap">
+                <img class="service-image" src="beverage machine.jfif" alt="Beverage vending machine" />
+              </div>
               <div class="service-bar"></div>
               <h4>Beverage Machines</h4>
               <p>Cold drink machines with water, soda, juice, sports drinks, and energy beverages.</p>
+              <div class="service-note">Perfect for gyms, offices, and busy lobbies</div>
             </div>
+
             <div class="service-card">
+              <div class="service-badge">Space Saving</div>
+              <div class="service-image-wrap">
+                <img class="service-image" src="Combo machine.jfif" alt="Combo vending machine" />
+              </div>
               <div class="service-bar"></div>
               <h4>Combo Machines</h4>
               <p>A space-saving option that combines snacks and drinks in one convenient machine.</p>
+              <div class="service-note">Ideal when you want more options in one unit</div>
             </div>
-            <div class="service-card">
+
+            <div class="service-card featured">
+              <div class="service-badge">Custom Program</div>
+              <div class="service-image-wrap">
+                <img class="service-image" src="snacks.jfif" alt="Variety of snacks and drinks for custom vending programs" />
+              </div>
               <div class="service-bar"></div>
               <h4>Custom Programs</h4>
               <p>Product selections tailored to offices, schools, gyms, and apartment communities.</p>
+              <div class="service-note">Choose the snack and drink mix that fits your location</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact">
+      <section id="trust" class="fade-up">
+        <div class="container">
+          <div class="section-head">
+            <div class="mini">Why Clients Choose Us</div>
+            <h3>Professional service backed by convenience and consistency</h3>
+            <p>
+              A great vending setup does more than hold products. It should look good, work well,
+              and stay stocked for the people who use it every day.
+            </p>
+          </div>
+
+          <div class="trust-grid">
+            <div class="trust-card">
+              <div class="trust-number">01</div>
+              <h4>Free Installation</h4>
+              <p>We help place the right machine at your location without making setup feel complicated.</p>
+            </div>
+            <div class="trust-card">
+              <div class="trust-number">02</div>
+              <h4>Reliable Restocking</h4>
+              <p>Our goal is to keep products available and your machines looking ready for use.</p>
+            </div>
+            <div class="trust-card">
+              <div class="trust-number">03</div>
+              <h4>Custom Product Mix</h4>
+              <p>Choose a vending lineup that matches your building, customers, staff, and daily traffic.</p>
+            </div>
+            <div class="trust-card">
+              <div class="trust-number">04</div>
+              <h4>Professional Support</h4>
+              <p>From service calls to maintenance, we focus on consistency, presentation, and care.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="fade-up">
+        <div class="container">
+          <div class="section-head">
+            <div class="mini">Our Process</div>
+            <h3>How we make vending simple</h3>
+            <p>
+              We keep the process straightforward so you can add vending to your property without stress.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            <div class="process-card">
+              <div class="process-step">1</div>
+              <h4>Tell Us About Your Space</h4>
+              <p>We learn about your location, traffic, goals, and the kind of machine setup you need most.</p>
+            </div>
+            <div class="process-card">
+              <div class="process-step">2</div>
+              <h4>Choose the Right Setup</h4>
+              <p>We match you with snack, beverage, combo, or custom options based on layout and convenience.</p>
+            </div>
+            <div class="process-card">
+              <div class="process-step">3</div>
+              <h4>We Install and Maintain</h4>
+              <p>Once placed, we handle restocking and upkeep so your vending service stays polished and dependable.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="fade-up">
         <div class="container">
           <div class="section-head">
             <div class="mini">Contact</div>
-            <h3>Ready to add vending to your property?</h3>
+            <h3>Ready to add premium vending to your property?</h3>
             <p>Reach out and we’ll help you find the right vending setup for your location.</p>
           </div>
 
           <div class="contact-layout">
-            <div class="contact-card">
+            <div class="contact-card contact-dark">
               <h4>Business Information</h4>
               <div class="info-list">
                 <div class="info-item">
@@ -774,24 +1167,28 @@
             </div>
 
             <div class="contact-card">
-              <h4>Request Information</h4>
+              <h4>Request a Custom Quote</h4>
               <form class="form-grid" action="https://formsubmit.co/hhboydvending@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="New H&amp;H Boyd Vending Inquiry" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_next" value="https://formsubmit.co/thanks" />
+
                 <div class="field">
                   <label for="fullName">Full Name</label>
                   <input id="fullName" name="Full Name" placeholder="Enter your name" autocomplete="name" required />
                 </div>
+
                 <div class="field">
                   <label for="email">Email Address</label>
                   <input id="email" type="email" name="Email Address" placeholder="Enter your email" autocomplete="email" required />
                 </div>
+
                 <div class="field full">
                   <label for="businessName">Business or Property Name</label>
                   <input id="businessName" name="Business or Property Name" placeholder="Company, school, gym, apartment building, etc." autocomplete="organization" required />
                 </div>
+
                 <div class="field">
                   <label for="serviceType">Service Type</label>
                   <select id="serviceType" name="Service Type" required>
@@ -802,42 +1199,78 @@
                     <option value="Custom Program">Custom Program</option>
                   </select>
                 </div>
+
                 <div class="field">
                   <label for="phone">Phone Number</label>
                   <input id="phone" type="tel" name="Phone Number" placeholder="Enter your phone number" autocomplete="tel" required />
                 </div>
+
                 <div class="field full">
                   <label for="message">Message</label>
                   <textarea id="message" name="Message" rows="5" placeholder="Tell us about your vending needs" required></textarea>
                 </div>
+
                 <div class="full">
                   <button type="submit" class="btn btn-primary">Send Inquiry</button>
                 </div>
               </form>
-              <p class
+              
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">© 2026 H&amp;H BOYD VENDING • Professional vending solutions.</footer>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h4>H&amp;H Boyd Vending</h4>
+            <p>Premium snack, beverage, and combo vending solutions for properties across Philadelphia and surrounding areas.</p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Quick Links</h5>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <div class="footer-col">
+            <h5>Service Area</h5>
+            <p>Philadelphia</p>
+            <p>Surrounding Areas</p>
+            <p>Commercial Properties</p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <a href="tel:+12672420272">(267) 242-0272</a>
+            <a href="mailto:hhboydvending@gmail.com">hhboydvending@gmail.com</a>
+            <p>Mon - Fri • 8:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 H&amp;H BOYD VENDING • Professional vending solutions.</div>
+      </div>
+    </footer>
 
     <script>
       const slideshow = document.getElementById("vending-slideshow");
       const slides = slideshow ? Array.from(slideshow.querySelectorAll(".slide")) : [];
       const dots = slideshow ? Array.from(slideshow.querySelectorAll(".slide-dot")) : [];
+      const prevArrow = slideshow ? slideshow.querySelector(".slide-arrow.prev") : null;
+      const nextArrow = slideshow ? slideshow.querySelector(".slide-arrow.next") : null;
       let currentSlide = 0;
       let slideTimer = null;
 
       function showSlide(index) {
         if (!slides.length) return;
         currentSlide = (index + slides.length) % slides.length;
-
         slides.forEach(function (slide, i) {
           slide.classList.toggle("active", i === currentSlide);
         });
-
         dots.forEach(function (dot, i) {
           dot.classList.toggle("active", i === currentSlide);
         });
@@ -846,18 +1279,53 @@
       function startSlideshow() {
         if (!slides.length) return;
         if (slideTimer) clearInterval(slideTimer);
-
         slideTimer = setInterval(function () {
           showSlide(currentSlide + 1);
-        }, 4000);
+        }, 4500);
+      }
+
+      function restartSlideshowAt(index) {
+        showSlide(index);
+        startSlideshow();
       }
 
       dots.forEach(function (dot, index) {
         dot.addEventListener("click", function () {
-          showSlide(index);
-          startSlideshow();
+          restartSlideshowAt(index);
         });
       });
+
+      if (prevArrow) {
+        prevArrow.addEventListener("click", function () {
+          restartSlideshowAt(currentSlide - 1);
+        });
+      }
+
+      if (nextArrow) {
+        nextArrow.addEventListener("click", function () {
+          restartSlideshowAt(currentSlide + 1);
+        });
+      }
+
+      const fadeEls = Array.from(document.querySelectorAll(".fade-up"));
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        fadeEls.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        fadeEls.forEach(function(el) {
+          el.classList.add("visible");
+        });
+      }
 
       showSlide(0);
       startSlideshow();
